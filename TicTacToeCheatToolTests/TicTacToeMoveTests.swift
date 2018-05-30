@@ -11,7 +11,7 @@ import XCTest
 
 class TicTacToeMoveTests: XCTestCase {
     
-    var move : [TicTacToeMove]!
+    var move: [TicTacToeMove]!
     
     override func setUp() {
         super.setUp()

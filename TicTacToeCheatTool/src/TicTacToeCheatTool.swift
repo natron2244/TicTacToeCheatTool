@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+//TODO: Use optionals for null checking
 //TODO: Only pass back one move, if even just choose the first
 //TODO: Set private and public methods
 //TODO: Test logic use a TicTacToeBoard, UnitTesting?
@@ -48,18 +49,46 @@ struct TicTacToeCheatTool {
         let emptyPositions = board.emptyPositions()
         if(emptyPositions.isEmpty ||
             board.hasWinner() != TicTacToeValue.empty) {
-            return [];
+            return []
         } else if(emptyPositions.count == 1) {
             return emptyPositions;
         } else {
-            //TODO: Implement weighted move recursive function that steps through all steps of possible moves for both players. A min max algorithm
-            return calculateNextBestMoves(board: board, player: player, emptyPositions: emptyPositions)
+            //TODO: Refactor weighted recursive function that steps through all steps of possible moves for both players. A min max algorithm
+            let bestMoves = calculateNextBestMoves(board: board, targetPlayer: player, currentPlayer: player)
+            return [bestMoves[0].position]
         }
     }
     
     //This fuction process the next best move
-    func calculateNextBestMoves(board: TicTacToeBoard, player: TicTacToeValue, emptyPositions: [CGPoint]) -> [CGPoint]{
-        return [CGPoint(x: 1, y: 1)]
+    func calculateNextBestMoves(board: TicTacToeBoard, targetPlayer: TicTacToeValue, currentPlayer: TicTacToeValue) -> [TicTacToeMove]{
+        let emptyPositions = board.emptyPositions()
+        let winner = board.hasWinner()
+
+        if(winner == targetPlayer) {
+            return [TicTacToeMove(position: CGPoint(x: 0, y: 0), weight: 10)]
+        } else if(winner == TicTacToeValue.getOpponent(player: targetPlayer)) {
+            return [TicTacToeMove(position: CGPoint(x: 0, y: 0), weight: -10)]
+        } else if(emptyPositions.isEmpty) {
+            return [TicTacToeMove(position: CGPoint(x: 0, y: 0), weight: 0)]
+        }
+
+        var moves: [TicTacToeMove] = [];
+        for position in emptyPositions {
+            var nextTurnBoard = TicTacToeBoard(board: board)
+            nextTurnBoard.set(value: currentPlayer, position: position)
+
+            var nextMove = calculateNextBestMoves(board: nextTurnBoard,
+                                                  targetPlayer: targetPlayer,
+                                                  currentPlayer: TicTacToeValue.getOpponent(player: currentPlayer))
+            
+            //TODO: Use optional here instead of 0 index
+            let move = TicTacToeMove(position: position, weight: nextMove[0].weight)
+            moves.append(move)
+        }
+
+        let bestMove = currentPlayer == targetPlayer ? moves.max()! : moves.min()!
+        return [bestMove]
     }
+
 }
 

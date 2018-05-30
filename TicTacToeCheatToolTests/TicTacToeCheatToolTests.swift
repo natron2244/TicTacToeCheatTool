@@ -53,6 +53,6 @@ class TicTacToeCheatToolTests: XCTestCase {
         
         let nextMoves = cheatTool.getNextBestMoves(board: aboutToWinBoard, player: TicTacToeValue.X)
         XCTAssertTrue(nextMoves.count == 1)
-        XCTAssertTrue(nextMoves[0].x == 1 && nextMoves[0].y == 1)
+        XCTAssertTrue(nextMoves[0].x == 0 && nextMoves[0].y == 2)
     }
 }

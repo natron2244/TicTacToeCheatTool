@@ -11,11 +11,24 @@ import UIKit
 
 //TODO: Look at using custom because CGPoint has float and Int only
 //TODO: Look at using gaurds
+//TODO: Refactor winning logic to use function, they are all simular logic
 struct TicTacToeBoard {
     var board:[[TicTacToeValue]];
     
     init(size: CGSize) {
         board = Array(repeating: Array(repeating: TicTacToeValue.empty, count: Int(size.width)), count: Int(size.height))
+    }
+    
+    //TODO: Optimize to only init the two dimensional array only once
+    init(board: TicTacToeBoard) {
+        let size: CGSize = CGSize(width: board.getRowCount(), height: board.getColumnCount())
+        self.init(size: size);
+        
+        for x in 0..<Int(size.width) {
+            for y in 0..<Int(size.height) {
+                self.board[x][y] = board.board[x][y]
+            }
+        }
     }
     
     //TODO: Check out of bounds
@@ -116,7 +129,7 @@ struct TicTacToeBoard {
      - returns: If a player as won, if neither empty
      */
     func checkDiagonalWin() -> TicTacToeValue {
-        var forwardDiagonalWinner = checkForwardDiagonalWin()
+        let forwardDiagonalWinner = checkForwardDiagonalWin()
         if(forwardDiagonalWinner != TicTacToeValue.empty) {
             return forwardDiagonalWinner;
         } else {

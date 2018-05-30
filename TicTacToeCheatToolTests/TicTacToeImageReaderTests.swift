@@ -11,7 +11,6 @@ import XCTest
 class TicTacToeImageReaderTests: XCTestCase {
     
     var imageReader: TicTacToeImageReader!
-    //Dada, Moma & Runa
     
     override func setUp() {
         super.setUp()
@@ -23,5 +22,12 @@ class TicTacToeImageReaderTests: XCTestCase {
         super.tearDown()
         
         imageReader = nil;
+    }
+    
+    func testGetTicTacToeBoard() {
+        let board = imageReader.getTicTacToeBoard();
+        XCTAssertTrue(board.getValue(position: CGPoint(x: 0, y: 0)) == TicTacToeValues.O)
+        XCTAssertTrue(board.getValue(position: CGPoint(x: 2, y: 2)) == TicTacToeValues.O)
+        
     }
 }

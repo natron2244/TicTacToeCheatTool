@@ -25,6 +25,7 @@
 		42777A7E20BE1B8300581D80 /* TicTacToeMoveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42777A7D20BE1B8300581D80 /* TicTacToeMoveTests.swift */; };
 		42C33FC620BEB4EA00468E5C /* TicTacToeBoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C33FC520BEB4EA00468E5C /* TicTacToeBoardTests.swift */; };
 		42C33FC820BEBBF400468E5C /* TicTacToeImageReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C33FC720BEBBF400468E5C /* TicTacToeImageReaderTests.swift */; };
+		42C33FCA20BED7A800468E5C /* TicTacToeCheatToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C33FC920BED7A800468E5C /* TicTacToeCheatToolTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		42777A7D20BE1B8300581D80 /* TicTacToeMoveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeMoveTests.swift; sourceTree = "<group>"; };
 		42C33FC520BEB4EA00468E5C /* TicTacToeBoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeBoardTests.swift; sourceTree = "<group>"; };
 		42C33FC720BEBBF400468E5C /* TicTacToeImageReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeImageReaderTests.swift; sourceTree = "<group>"; };
+		42C33FC920BED7A800468E5C /* TicTacToeCheatToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeCheatToolTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 		42777A6D20BE17E400581D80 /* TicTacToeCheatToolTests */ = {
 			isa = PBXGroup;
 			children = (
+				42C33FC920BED7A800468E5C /* TicTacToeCheatToolTests.swift */,
 				42777A7D20BE1B8300581D80 /* TicTacToeMoveTests.swift */,
 				42C33FC520BEB4EA00468E5C /* TicTacToeBoardTests.swift */,
 				42C33FC720BEBBF400468E5C /* TicTacToeImageReaderTests.swift */,
@@ -250,6 +253,7 @@
 				420AA85520BE277B00BA7984 /* TicTacToeCheatTool.swift in Sources */,
 				42C33FC820BEBBF400468E5C /* TicTacToeImageReaderTests.swift in Sources */,
 				420AA85220BE275800BA7984 /* TicTacToeBoard.swift in Sources */,
+				42C33FCA20BED7A800468E5C /* TicTacToeCheatToolTests.swift in Sources */,
 				420AA84C20BE26F300BA7984 /* TicTacToeValue.swift in Sources */,
 				420AA84920BE268E00BA7984 /* TicTacToeMove.swift in Sources */,
 				42777A7E20BE1B8300581D80 /* TicTacToeMoveTests.swift in Sources */,

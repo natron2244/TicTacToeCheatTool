@@ -11,6 +11,7 @@ import UIKit
 
 //TODO: Test logic use a TicTacToeBoard, UnitTesting?
 //TODO: Uncomment UImage varibles
+//TODO: Add a row and column struct to replace CGPoint
 //TODO: Write out restrictions of the code base
 //TODO: Any need comments on re-reader
 //TODO: Look for any unneed ;
@@ -22,7 +23,7 @@ import UIKit
 struct TicTacToeCheatTool {
     var imageReader: TicTacToeImageReader
     
-    init(imageReader: TicTacToeImageReader, boardSize: CGSize, cellSize: CGSize) {
+    init(imageReader: TicTacToeImageReader) {
         self.imageReader = imageReader
     }
     
@@ -46,18 +47,17 @@ struct TicTacToeCheatTool {
         if(emptyPositions.isEmpty ||
             board.hasWinner() != TicTacToeValues.empty) {
             return [];
+        } else if(emptyPositions.count == 1) {
+            return emptyPositions;
+        } else {
+            //TODO: Implement weighted move recursive function that steps through all steps of possible moves for both players. A min max algorithm
+            return minimax(board: board, player: player, emptyPositions: emptyPositions)
         }
-        
-        
-        //TODO: Implement weighted move recursive function that steps through all steps of possible moves for both players. A min max algorithm
-        
-        
-        return []
     }
     
     //This fuction process the next best move
-    func minimax(board: TicTacToeBoard, player: TicTacToeValues) {
-        
+    func minimax(board: TicTacToeBoard, player: TicTacToeValues, emptyPositions: [CGPoint]) -> [CGPoint]{
+        return [CGPoint(x: 1, y: 1)]
     }
 }
 

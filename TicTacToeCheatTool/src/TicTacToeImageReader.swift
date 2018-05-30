@@ -43,18 +43,22 @@ struct TicTacToeImageReader {
             //var valueImage = getImageForValue(value)
             //if(boardImage.contains(image: valueImage, inRect: imageRect)
             //{
-            return value;
+            //return value;
             //}
+            print(value)
         }
         
-        return TicTacToeValues.empty
+        return TicTacToeValues.O
     }
     
     func getImageRect(position: CGPoint) -> CGRect {
-        let rect = CGRect(x: position.x,
-                          y: position.y,
-                          width: position.x + self.cellSize.width,
-                          height: position.y + self.cellSize.height)
+        let x = position.x * self.cellSize.width;
+        let y = position.y * self.cellSize.height;
+        
+        let rect = CGRect(x: x,
+                          y: y,
+                          width: self.cellSize.width,
+                          height: self.cellSize.height)
         return rect
     }
 }

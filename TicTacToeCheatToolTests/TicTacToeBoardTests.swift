@@ -24,7 +24,7 @@ class TicTacToeBoardTests: XCTestCase {
         board = nil
     }
     
-    func testEmptyBoard() {
+    func testEmptyPositions() {
         var emptyPositions = board.emptyPositions()
         XCTAssertTrue(emptyPositions.count == 9)
         

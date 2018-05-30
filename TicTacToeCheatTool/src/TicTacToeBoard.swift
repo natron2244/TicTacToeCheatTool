@@ -9,33 +9,43 @@
 import Foundation
 import UIKit
 
-// TODO: Look at using custom because CGPoint has float and Int only
+//TODO: Look at using custom because CGPoint has float and Int only
+//TODO: Look at using gaurds
 struct TicTacToeBoard {
-    var board:[[TicTacToeValues]];
+    var board:[[TicTacToeValue]];
     
     init(size: CGSize) {
-        board = Array(repeating: Array(repeating: TicTacToeValues.empty, count: Int(size.width)), count: Int(size.height))
+        board = Array(repeating: Array(repeating: TicTacToeValue.empty, count: Int(size.width)), count: Int(size.height))
     }
     
-    mutating func set(value: TicTacToeValues, position: CGPoint) {
+    //TODO: Check out of bounds
+    mutating func set(value: TicTacToeValue, position: CGPoint) {
         self.board[Int(position.x)][Int(position.y)] = value
     }
     
-    func getValue(position: CGPoint) -> TicTacToeValues {
+    //TODO: Check out of bounds
+    func getValue(position: CGPoint) -> TicTacToeValue {
         return self.board[Int(position.x)][Int(position.y)]
     }
     
+    func getRowCount() -> Int {
+        return board.count
+    }
+    
+    func getColumnCount() -> Int {
+        return board[0].count
+    }
     /*
      - returns: If a player as won, if neither empty
      */
-    func hasWinner() -> TicTacToeValues {
+    func hasWinner() -> TicTacToeValue {
         var winner = checkHorizontalWin()
-        if(winner != TicTacToeValues.empty) {
+        if(winner != TicTacToeValue.empty) {
             return winner
         }
         
         winner = checkVerticalWin()
-        if(winner != TicTacToeValues.empty) {
+        if(winner != TicTacToeValue.empty) {
             return winner
         }
         
@@ -46,32 +56,117 @@ struct TicTacToeBoard {
     /*
      - returns: If a player as won, if neither empty
      */
-    func checkHorizontalWin() -> TicTacToeValues {
-        //TODO
-        return TicTacToeValues.empty
+    func checkHorizontalWin() -> TicTacToeValue {
+        var winner = TicTacToeValue.empty;
+        
+        for rows in self.board {
+            var currentWinner = TicTacToeValue.empty
+            for value in rows {
+                if(value == TicTacToeValue.empty) {
+                    currentWinner = TicTacToeValue.empty;
+                    break;
+                } else if(currentWinner == TicTacToeValue.empty) {
+                    currentWinner = value
+                } else if(currentWinner != value) {
+                    currentWinner = TicTacToeValue.empty
+                    break
+                }
+            }
+            
+            if(currentWinner != TicTacToeValue.empty) {
+                winner = currentWinner
+                break
+            }
+        }
+        
+        return winner
     }
     
     /*
      - returns: If a player as won, if neither empty
      */
-    func checkVerticalWin() -> TicTacToeValues {
-        //TODO
-        return TicTacToeValues.empty
+    func checkVerticalWin() -> TicTacToeValue {
+        var winner = TicTacToeValue.empty;
+        
+        for column in 0..<getColumnCount() {
+            var currentWinner = TicTacToeValue.empty
+            for row in board {
+                let value = row[column];
+                if(value == TicTacToeValue.empty) {
+                    currentWinner = TicTacToeValue.empty;
+                    break;
+                } else if(currentWinner == TicTacToeValue.empty) {
+                    currentWinner = value
+                } else if(currentWinner != value) {
+                    currentWinner = TicTacToeValue.empty
+                    break
+                }
+            }
+            
+            if(currentWinner != TicTacToeValue.empty) {
+                winner = currentWinner
+                break
+            }
+        }
+        
+        return winner
     }
     
     /*
      - returns: If a player as won, if neither empty
      */
-    func checkDiagonalWin() -> TicTacToeValues {
-        //TODO
-        return TicTacToeValues.empty
+    func checkDiagonalWin() -> TicTacToeValue {
+        var forwardDiagonalWinner = checkForwardDiagonalWin()
+        if(forwardDiagonalWinner != TicTacToeValue.empty) {
+            return forwardDiagonalWinner;
+        } else {
+            return checkBackwardDiagonalWin()
+        }
     }
+    
+    func checkForwardDiagonalWin() -> TicTacToeValue {
+        var winner = TicTacToeValue.empty
+        for (x, y) in zip((0..<getRowCount()), (0..<getColumnCount())) {
+            let value = self.board[x][y]
+            
+            if(value == TicTacToeValue.empty) {
+                winner = TicTacToeValue.empty;
+                break;
+            } else if(winner == TicTacToeValue.empty) {
+                winner = value
+            } else if(winner != value) {
+                winner = TicTacToeValue.empty
+                break
+            }
+        }
+        return winner;
+    }
+    
+    func checkBackwardDiagonalWin() -> TicTacToeValue {
+        var winner = TicTacToeValue.empty
+        for (x, y) in zip((0..<getRowCount()), (0..<getColumnCount()).reversed()) {
+            let value = self.board[x][y]
+            
+            if(value == TicTacToeValue.empty) {
+                winner = TicTacToeValue.empty;
+                break;
+            } else if(winner == TicTacToeValue.empty) {
+                winner = value
+            } else if(winner != value) {
+                winner = TicTacToeValue.empty
+                break
+            }
+        }
+        return winner
+    }
+    
+    
     
     func emptyPositions() -> [CGPoint] {
         var emptyPositions: [CGPoint] = []
-        for x in 0...self.board.count - 1 {
-            for y in 0...self.board[x].count - 1 {
-                if(self.board[x][y] == TicTacToeValues.empty) {
+        for x in 0..<getRowCount() {
+            for y in 0..<getColumnCount() {
+                if(self.board[x][y] == TicTacToeValue.empty) {
                     emptyPositions.append(CGPoint(x: x, y: y))
                 }
             }

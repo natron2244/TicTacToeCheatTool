@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum TicTacToeValues: String {
+enum TicTacToeValue: String {
     case X = "X", O = "O", empty = ""
     
     static let allValues = [X, O, empty];

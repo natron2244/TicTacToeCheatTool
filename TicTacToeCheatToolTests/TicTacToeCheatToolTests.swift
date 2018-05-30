@@ -29,29 +29,29 @@ class TicTacToeCheatToolTests: XCTestCase {
     
     func testNoMoveAvailable() {
         var fullBoard = TicTacToeBoard(size: CGSize(width: 1, height: 1))
-        fullBoard.set(value: TicTacToeValues.X, position: CGPoint(x: 0, y: 0))
+        fullBoard.set(value: TicTacToeValue.X, position: CGPoint(x: 0, y: 0))
         
-        let nextMoves = cheatTool.getNextBestMoves(board: fullBoard, player: TicTacToeValues.O)
+        let nextMoves = cheatTool.getNextBestMoves(board: fullBoard, player: TicTacToeValue.O)
         XCTAssertTrue(nextMoves.isEmpty)
     }
     
     func testOneMoveAvailable() {
         let fullBoard = TicTacToeBoard(size: CGSize(width: 1, height: 1))
         
-        let nextMoves = cheatTool.getNextBestMoves(board: fullBoard, player: TicTacToeValues.O)
+        let nextMoves = cheatTool.getNextBestMoves(board: fullBoard, player: TicTacToeValue.O)
         XCTAssertTrue(nextMoves.count == 1)
         XCTAssertTrue(nextMoves[0].x == 0 && nextMoves[0].y == 0)
     }
     
     func testWinningMoveOverBlocklingOppenent() {
         var aboutToWinBoard = TicTacToeBoard(size: CGSize(width: 3, height: 3))
-        aboutToWinBoard.set(value: TicTacToeValues.X, position: CGPoint(x: 0, y: 0))
-        aboutToWinBoard.set(value: TicTacToeValues.X, position: CGPoint(x: 0, y: 1))
+        aboutToWinBoard.set(value: TicTacToeValue.X, position: CGPoint(x: 0, y: 0))
+        aboutToWinBoard.set(value: TicTacToeValue.X, position: CGPoint(x: 0, y: 1))
         
-        aboutToWinBoard.set(value: TicTacToeValues.O, position: CGPoint(x: 2, y: 0))
-        aboutToWinBoard.set(value: TicTacToeValues.O, position: CGPoint(x: 2, y: 1))
+        aboutToWinBoard.set(value: TicTacToeValue.O, position: CGPoint(x: 2, y: 0))
+        aboutToWinBoard.set(value: TicTacToeValue.O, position: CGPoint(x: 2, y: 1))
         
-        let nextMoves = cheatTool.getNextBestMoves(board: aboutToWinBoard, player: TicTacToeValues.X)
+        let nextMoves = cheatTool.getNextBestMoves(board: aboutToWinBoard, player: TicTacToeValue.X)
         XCTAssertTrue(nextMoves.count == 1)
         XCTAssertTrue(nextMoves[0].x == 1 && nextMoves[0].y == 1)
     }

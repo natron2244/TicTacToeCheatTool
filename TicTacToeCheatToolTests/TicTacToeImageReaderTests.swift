@@ -26,8 +26,8 @@ class TicTacToeImageReaderTests: XCTestCase {
     
     func testGetTicTacToeBoard() {
         let board = imageReader.getTicTacToeBoard();
-        XCTAssertTrue(board.getValue(position: CGPoint(x: 0, y: 0)) == TicTacToeValues.O)
-        XCTAssertTrue(board.getValue(position: CGPoint(x: 2, y: 2)) == TicTacToeValues.O)
+        XCTAssertTrue(board.getValue(position: CGPoint(x: 0, y: 0)) == TicTacToeValue.O)
+        XCTAssertTrue(board.getValue(position: CGPoint(x: 2, y: 2)) == TicTacToeValue.O)
         
     }
 }

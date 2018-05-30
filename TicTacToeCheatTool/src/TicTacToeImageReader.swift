@@ -24,8 +24,8 @@ struct TicTacToeImageReader {
         var board = TicTacToeBoard(size: self.boardSize)
         
         //TODO: Check if off by one
-        for x in 0...Int(self.boardSize.width - 1) {
-            for y in 0...Int(self.boardSize.height - 1) {
+        for x in 0..<Int(self.boardSize.width) {
+            for y in 0..<Int(self.boardSize.height) {
                 let position = CGPoint(x: x, y: y)
                 let value = getBoardValue(/*boardImage: boardImage,*/ position: position)
                 board.set(value: value, position: position)
@@ -34,10 +34,10 @@ struct TicTacToeImageReader {
         return board
     }
     
-    func getBoardValue(/*boardImage: UIImage,*/ position: CGPoint) -> TicTacToeValues {
+    func getBoardValue(/*boardImage: UIImage,*/ position: CGPoint) -> TicTacToeValue {
         
         let imageRect = getImageRect(position: position)
-        for value in TicTacToeValues.allValues {
+        for value in TicTacToeValue.allValues {
             //--- Pseudocode ---
             //TODO: Need image matching library here to match images.
             //var valueImage = getImageForValue(value)
@@ -48,7 +48,7 @@ struct TicTacToeImageReader {
             print(value)
         }
         
-        return TicTacToeValues.O
+        return TicTacToeValue.O
     }
     
     func getImageRect(position: CGPoint) -> CGRect {

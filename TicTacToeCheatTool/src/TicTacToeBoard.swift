@@ -7,7 +7,16 @@
 //
 
 import Foundation
-import UIKit
+
+struct TicTacToeCell {
+    var row: Int
+    var column: Int
+    
+    init(row: Int, column: Int) {
+        self.row = row
+        self.column = column
+    }
+}
 
 //TODO: Look at using gaurds
 //TODO: Refactor winning logic to use function, they are all simular logic

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 struct TicTacToeMove: Comparable {
     var move: TicTacToeCell

@@ -19,7 +19,7 @@ struct TicTacToeImageReader {
     }
     
     func getTicTacToeBoard(boardImage: UIImage?) -> TicTacToeBoard {
-        var board = TicTacToeBoard(cell: self.boardSize)
+        var board = TicTacToeBoard(size: self.boardSize)
         
         for row in 0..<self.boardSize.row {
             for column in 0..<self.boardSize.column {

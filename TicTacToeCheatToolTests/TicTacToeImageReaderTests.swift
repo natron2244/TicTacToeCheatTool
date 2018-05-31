@@ -15,19 +15,17 @@ class TicTacToeImageReaderTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        imageReader = TicTacToeImageReader(boardSize: CGSize(width: 3, height: 3), cellSize: CGSize(width: 50, height: 50))
+        imageReader = TicTacToeImageReader(boardSize: TicTacToeCell(row: 3, column: 3), cellSize: CGSize(width: 50, height: 50))
     }
     
     override func tearDown() {
         super.tearDown()
         
-        imageReader = nil;
+        imageReader = nil
     }
     
     func testGetTicTacToeBoard() {
-        let board = imageReader.getTicTacToeBoard();
-        XCTAssertTrue(board.getValue(position: CGPoint(x: 0, y: 0)) == TicTacToeValue.O)
-        XCTAssertTrue(board.getValue(position: CGPoint(x: 2, y: 2)) == TicTacToeValue.O)
-        
+        let lastRect = imageReader.getImageRect(cell: TicTacToeCell(row: 2, column: 2))
+        XCTAssertTrue(lastRect.equalTo(CGRect(x: 100, y: 100, width: 50, height: 50)))
     }
 }

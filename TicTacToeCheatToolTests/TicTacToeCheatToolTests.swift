@@ -17,7 +17,7 @@ class TicTacToeCheatToolTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let imageReader = TicTacToeImageReader(boardSize: CGSize(width: 3, height: 3),
+        let imageReader = TicTacToeImageReader(boardSize: TicTacToeCell(row: 3, column: 3),
                                                cellSize: CGSize(width: 50, height: 50))
         cheatTool = TicTacToeCheatTool(imageReader: imageReader)
     }
@@ -29,52 +29,52 @@ class TicTacToeCheatToolTests: XCTestCase {
     }
     
     func testNoMoveAvailable() {
-        var fullBoard = TicTacToeBoard(size: CGSize(width: 1, height: 1))
-        fullBoard.set(value: TicTacToeValue.X, position: CGPoint(x: 0, y: 0))
+        var fullBoard = TicTacToeBoard(size: TicTacToeCell(row: 1, column: 1))
+        fullBoard.set(value: TicTacToeValue.X, cell: TicTacToeCell(row: 0, column: 0))
         
         let nextMove = cheatTool.getNextBestMove(board: fullBoard, player: TicTacToeValue.O)
         XCTAssertNil(nextMove)
     }
     
     func testOneMoveAvailable() {
-        let fullBoard = TicTacToeBoard(size: CGSize(width: 1, height: 1))
+        let fullBoard = TicTacToeBoard(size: TicTacToeCell(row: 1, column: 1))
         
         let nextMove = cheatTool.getNextBestMove(board: fullBoard, player: TicTacToeValue.O)
         XCTAssertNotNil(nextMove)
-        XCTAssertTrue(nextMove?.x == 0 && nextMove?.y == 0)
+        XCTAssertTrue(nextMove?.row == 0 && nextMove?.column == 0)
     }
     
     func testEmptyBoard() {
-        let emptyBoard = TicTacToeBoard(size: CGSize(width: 3, height: 3))
+        let emptyBoard = TicTacToeBoard(size: TicTacToeCell(row: 3, column: 3))
         
         let nextMove = cheatTool.getNextBestMove(board: emptyBoard, player: TicTacToeValue.X)
         XCTAssertNotNil(nextMove)
-        XCTAssertTrue(nextMove?.x == 0 && nextMove?.y == 0)
+        XCTAssertTrue(nextMove?.row == 0 && nextMove?.column == 0)
     }
     
     func testWinningMoveOverBlocklingOppenent() {
-        var aboutToWinBoard = TicTacToeBoard(size: CGSize(width: 3, height: 3))
-        aboutToWinBoard.set(value: TicTacToeValue.X, position: CGPoint(x: 0, y: 0))
-        aboutToWinBoard.set(value: TicTacToeValue.X, position: CGPoint(x: 0, y: 1))
+        var aboutToWinBoard = TicTacToeBoard(size: TicTacToeCell(row: 3, column: 3))
+        aboutToWinBoard.set(value: TicTacToeValue.X, cell: TicTacToeCell(row: 0, column: 0))
+        aboutToWinBoard.set(value: TicTacToeValue.X, cell: TicTacToeCell(row: 0, column: 1))
         
-        aboutToWinBoard.set(value: TicTacToeValue.O, position: CGPoint(x: 2, y: 0))
-        aboutToWinBoard.set(value: TicTacToeValue.O, position: CGPoint(x: 2, y: 1))
+        aboutToWinBoard.set(value: TicTacToeValue.O, cell: TicTacToeCell(row: 2, column: 0))
+        aboutToWinBoard.set(value: TicTacToeValue.O, cell: TicTacToeCell(row: 2, column: 1))
         
         let nextMove = cheatTool.getNextBestMove(board: aboutToWinBoard, player: TicTacToeValue.X)
         XCTAssertNotNil(nextMove)
-        XCTAssertTrue(nextMove?.x == 0 && nextMove?.y == 2)
+        XCTAssertTrue(nextMove?.row == 0 && nextMove?.column == 2)
     }
     
     func testBlocklingOppenent() {
-        var aboutToWinBoard = TicTacToeBoard(size: CGSize(width: 3, height: 3))
-        aboutToWinBoard.set(value: TicTacToeValue.X, position: CGPoint(x: 0, y: 0))
-        aboutToWinBoard.set(value: TicTacToeValue.X, position: CGPoint(x: 2, y: 2))
+        var aboutToWinBoard = TicTacToeBoard(size: TicTacToeCell(row: 3, column: 3))
+        aboutToWinBoard.set(value: TicTacToeValue.X, cell: TicTacToeCell(row: 0, column: 0))
+        aboutToWinBoard.set(value: TicTacToeValue.X, cell: TicTacToeCell(row: 2, column: 2))
         
-        aboutToWinBoard.set(value: TicTacToeValue.O, position: CGPoint(x: 0, y: 2))
-        aboutToWinBoard.set(value: TicTacToeValue.O, position: CGPoint(x: 1, y: 1))
+        aboutToWinBoard.set(value: TicTacToeValue.O, cell: TicTacToeCell(row: 0, column: 2))
+        aboutToWinBoard.set(value: TicTacToeValue.O, cell: TicTacToeCell(row: 1, column: 1))
         
         let nextMove = cheatTool.getNextBestMove(board: aboutToWinBoard, player: TicTacToeValue.X)
         XCTAssertNotNil(nextMove)
-        XCTAssertTrue(nextMove?.x == 2 && nextMove?.y == 0)
+        XCTAssertTrue(nextMove?.row == 2 && nextMove?.column == 0)
     }
 }

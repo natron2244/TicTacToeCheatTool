@@ -9,44 +9,44 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TicTacToeCheatTool/src/TicTacToeCheatTool.swift"
-            timestampString = "549396247.383152"
+            filePath = "TicTacToeCheatTool/src/TicTacToeBoard.swift"
+            timestampString = "549419676.621236"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "calculateNextBestMoves(board:targetPlayer:currentPlayer:)"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "init(board:)"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "TicTacToeCheatTool.TicTacToeCheatTool.calculateNextBestMoves(board: TicTacToeCheatTool.TicTacToeBoard, targetPlayer: TicTacToeCheatTool.TicTacToeValue, currentPlayer: TicTacToeCheatTool.TicTacToeValue) -&gt; Swift.Array&lt;TicTacToeCheatTool.TicTacToeMove&gt;"
+                  symbolName = "TicTacToeCheatTool.TicTacToeBoard.init(board: TicTacToeCheatTool.TicTacToeBoard) -&gt; TicTacToeCheatTool.TicTacToeBoard"
                   moduleName = "TicTacToeCheatTool"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///source/TicTacToeCheatTool/TicTacToeCheatTool/src/TicTacToeCheatTool.swift"
-                  timestampString = "549396073.993572"
+                  urlString = "file:///source/TicTacToeCheatTool/TicTacToeCheatTool/src/TicTacToeBoard.swift"
+                  timestampString = "549417012.5448101"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "63"
-                  endingLineNumber = "63"
-                  offsetFromSymbolStart = "51">
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "76">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "TicTacToeCheatToolTests.TicTacToeCheatTool.calculateNextBestMoves(board: TicTacToeCheatToolTests.TicTacToeBoard, targetPlayer: TicTacToeCheatToolTests.TicTacToeValue, currentPlayer: TicTacToeCheatToolTests.TicTacToeValue) -&gt; Swift.Array&lt;TicTacToeCheatToolTests.TicTacToeMove&gt;"
+                  symbolName = "TicTacToeCheatToolTests.TicTacToeBoard.init(board: TicTacToeCheatToolTests.TicTacToeBoard) -&gt; TicTacToeCheatToolTests.TicTacToeBoard"
                   moduleName = "TicTacToeCheatToolTests"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///source/TicTacToeCheatTool/TicTacToeCheatTool/src/TicTacToeCheatTool.swift"
-                  timestampString = "549396075.295146"
+                  urlString = "file:///source/TicTacToeCheatTool/TicTacToeCheatTool/src/TicTacToeBoard.swift"
+                  timestampString = "549417017.21007"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "63"
-                  endingLineNumber = "63"
-                  offsetFromSymbolStart = "51">
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "76">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -57,92 +57,44 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TicTacToeCheatTool/src/TicTacToeCheatTool.swift"
-            timestampString = "549396247.384133"
+            filePath = "TicTacToeCheatTool/src/TicTacToeBoard.swift"
+            timestampString = "549419676.621666"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "getNextBestMoves(board:player:)"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "init(board:)"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "TicTacToeCheatTool.TicTacToeCheatTool.getNextBestMoves(board: TicTacToeCheatTool.TicTacToeBoard, player: TicTacToeCheatTool.TicTacToeValue) -&gt; Swift.Array&lt;__C.CGPoint&gt;"
+                  symbolName = "TicTacToeCheatTool.TicTacToeBoard.init(board: TicTacToeCheatTool.TicTacToeBoard) -&gt; TicTacToeCheatTool.TicTacToeBoard"
                   moduleName = "TicTacToeCheatTool"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///source/TicTacToeCheatTool/TicTacToeCheatTool/src/TicTacToeCheatTool.swift"
-                  timestampString = "549396074.008867"
+                  urlString = "file:///source/TicTacToeCheatTool/TicTacToeCheatTool/src/TicTacToeBoard.swift"
+                  timestampString = "549417012.554011"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "57"
-                  endingLineNumber = "57"
-                  offsetFromSymbolStart = "798">
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "1416">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "TicTacToeCheatToolTests.TicTacToeCheatTool.getNextBestMoves(board: TicTacToeCheatToolTests.TicTacToeBoard, player: TicTacToeCheatToolTests.TicTacToeValue) -&gt; Swift.Array&lt;__C.CGPoint&gt;"
+                  symbolName = "TicTacToeCheatToolTests.TicTacToeBoard.init(board: TicTacToeCheatToolTests.TicTacToeBoard) -&gt; TicTacToeCheatToolTests.TicTacToeBoard"
                   moduleName = "TicTacToeCheatToolTests"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///source/TicTacToeCheatTool/TicTacToeCheatTool/src/TicTacToeCheatTool.swift"
-                  timestampString = "549396075.29942"
+                  urlString = "file:///source/TicTacToeCheatTool/TicTacToeCheatTool/src/TicTacToeBoard.swift"
+                  timestampString = "549417017.220536"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "57"
-                  endingLineNumber = "57"
-                  offsetFromSymbolStart = "798">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TicTacToeCheatTool/src/TicTacToeCheatTool.swift"
-            timestampString = "549396247.384495"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "calculateNextBestMoves(board:targetPlayer:currentPlayer:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TicTacToeCheatTool.TicTacToeCheatTool.calculateNextBestMoves(board: TicTacToeCheatTool.TicTacToeBoard, targetPlayer: TicTacToeCheatTool.TicTacToeValue, currentPlayer: TicTacToeCheatTool.TicTacToeValue) -&gt; Swift.Array&lt;TicTacToeCheatTool.TicTacToeMove&gt;"
-                  moduleName = "TicTacToeCheatTool"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///source/TicTacToeCheatTool/TicTacToeCheatTool/src/TicTacToeCheatTool.swift"
-                  timestampString = "549396074.0160151"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "74"
-                  endingLineNumber = "74"
-                  offsetFromSymbolStart = "1068">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TicTacToeCheatToolTests.TicTacToeCheatTool.calculateNextBestMoves(board: TicTacToeCheatToolTests.TicTacToeBoard, targetPlayer: TicTacToeCheatToolTests.TicTacToeValue, currentPlayer: TicTacToeCheatToolTests.TicTacToeValue) -&gt; Swift.Array&lt;TicTacToeCheatToolTests.TicTacToeMove&gt;"
-                  moduleName = "TicTacToeCheatToolTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///source/TicTacToeCheatTool/TicTacToeCheatTool/src/TicTacToeCheatTool.swift"
-                  timestampString = "549396075.303382"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "74"
-                  endingLineNumber = "74"
-                  offsetFromSymbolStart = "1068">
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "1416">
                </Location>
             </Locations>
          </BreakpointContent>

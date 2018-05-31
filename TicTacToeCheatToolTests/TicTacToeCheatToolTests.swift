@@ -9,6 +9,7 @@
 import XCTest
 @testable import TicTacToeCheatTool
 
+//TODO: Add preformance test to see where best to make optimizations
 class TicTacToeCheatToolTests: XCTestCase {
     
     var cheatTool: TicTacToeCheatTool!
@@ -31,16 +32,24 @@ class TicTacToeCheatToolTests: XCTestCase {
         var fullBoard = TicTacToeBoard(size: CGSize(width: 1, height: 1))
         fullBoard.set(value: TicTacToeValue.X, position: CGPoint(x: 0, y: 0))
         
-        let nextMoves = cheatTool.getNextBestMoves(board: fullBoard, player: TicTacToeValue.O)
-        XCTAssertTrue(nextMoves.isEmpty)
+        let nextMove = cheatTool.getNextBestMove(board: fullBoard, player: TicTacToeValue.O)
+        XCTAssertNil(nextMove)
     }
     
     func testOneMoveAvailable() {
         let fullBoard = TicTacToeBoard(size: CGSize(width: 1, height: 1))
         
-        let nextMoves = cheatTool.getNextBestMoves(board: fullBoard, player: TicTacToeValue.O)
-        XCTAssertTrue(nextMoves.count == 1)
-        XCTAssertTrue(nextMoves[0].x == 0 && nextMoves[0].y == 0)
+        let nextMove = cheatTool.getNextBestMove(board: fullBoard, player: TicTacToeValue.O)
+        XCTAssertNotNil(nextMove)
+        XCTAssertTrue(nextMove?.x == 0 && nextMove?.y == 0)
+    }
+    
+    func testEmptyBoard() {
+        let emptyBoard = TicTacToeBoard(size: CGSize(width: 3, height: 3))
+        
+        let nextMove = cheatTool.getNextBestMove(board: emptyBoard, player: TicTacToeValue.X)
+        XCTAssertNotNil(nextMove)
+        XCTAssertTrue(nextMove?.x == 0 && nextMove?.y == 0)
     }
     
     func testWinningMoveOverBlocklingOppenent() {
@@ -51,8 +60,21 @@ class TicTacToeCheatToolTests: XCTestCase {
         aboutToWinBoard.set(value: TicTacToeValue.O, position: CGPoint(x: 2, y: 0))
         aboutToWinBoard.set(value: TicTacToeValue.O, position: CGPoint(x: 2, y: 1))
         
-        let nextMoves = cheatTool.getNextBestMoves(board: aboutToWinBoard, player: TicTacToeValue.X)
-        XCTAssertTrue(nextMoves.count == 1)
-        XCTAssertTrue(nextMoves[0].x == 0 && nextMoves[0].y == 2)
+        let nextMove = cheatTool.getNextBestMove(board: aboutToWinBoard, player: TicTacToeValue.X)
+        XCTAssertNotNil(nextMove)
+        XCTAssertTrue(nextMove?.x == 0 && nextMove?.y == 2)
+    }
+    
+    func testBlocklingOppenent() {
+        var aboutToWinBoard = TicTacToeBoard(size: CGSize(width: 3, height: 3))
+        aboutToWinBoard.set(value: TicTacToeValue.X, position: CGPoint(x: 0, y: 0))
+        aboutToWinBoard.set(value: TicTacToeValue.X, position: CGPoint(x: 2, y: 2))
+        
+        aboutToWinBoard.set(value: TicTacToeValue.O, position: CGPoint(x: 0, y: 2))
+        aboutToWinBoard.set(value: TicTacToeValue.O, position: CGPoint(x: 1, y: 1))
+        
+        let nextMove = cheatTool.getNextBestMove(board: aboutToWinBoard, player: TicTacToeValue.X)
+        XCTAssertNotNil(nextMove)
+        XCTAssertTrue(nextMove?.x == 2 && nextMove?.y == 0)
     }
 }

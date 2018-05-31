@@ -16,7 +16,7 @@ struct TicTacToeBoard {
     var board:[[TicTacToeValue]];
     
     init(size: CGSize) {
-        board = Array(repeating: Array(repeating: TicTacToeValue.empty, count: Int(size.width)), count: Int(size.height))
+        self.board = Array(repeating: Array(repeating: TicTacToeValue.empty, count: Int(size.width)), count: Int(size.height))
     }
     
     //TODO: Optimize to only init the two dimensional array only once

@@ -46,7 +46,7 @@ class TicTacToeBoardTests: XCTestCase {
     }
     
     func testHorizontalWin() {
-        for column in (0..<board.getColumnCount()) {
+        for column in (0..<board.columnCount()) {
             board.set(value: TicTacToeValue.X, cell: TicTacToeCell(row: 1, column: column))
         }
         board.set(value: TicTacToeValue.O, cell: TicTacToeCell(row: 0, column:0))
@@ -56,7 +56,7 @@ class TicTacToeBoardTests: XCTestCase {
     }
     
     func testVerticalWin() {
-        for row in (0..<board.getRowCount()) {
+        for row in (0..<board.rowCount()) {
             board.set(value: TicTacToeValue.X, cell: TicTacToeCell(row: row, column: 1))
         }
         board.set(value: TicTacToeValue.O, cell: TicTacToeCell(row: 0, column:0))
@@ -66,7 +66,7 @@ class TicTacToeBoardTests: XCTestCase {
     }
     
     func testForwardDiagonalWin() {
-        for (row, column) in zip((0..<board.getRowCount()), (0..<board.getColumnCount())) {
+        for (row, column) in zip((0..<board.rowCount()), (0..<board.columnCount())) {
             board.set(value: TicTacToeValue.X, cell: TicTacToeCell(row: row, column: column))
         }
         board.set(value: TicTacToeValue.O, cell: TicTacToeCell(row: 0, column:2))
@@ -76,7 +76,7 @@ class TicTacToeBoardTests: XCTestCase {
     }
     
     func testBackwardDiagonalWin() {
-        for (row, column) in zip((0..<board.getRowCount()), (0..<board.getColumnCount()).reversed()) {
+        for (row, column) in zip((0..<board.rowCount()), (0..<board.columnCount()).reversed()) {
             board.set(value: TicTacToeValue.X, cell: TicTacToeCell(row: row, column: column))
         }
         board.set(value: TicTacToeValue.O, cell: TicTacToeCell(row: 0, column:0))

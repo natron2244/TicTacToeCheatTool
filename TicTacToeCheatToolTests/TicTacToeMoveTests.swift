@@ -18,25 +18,24 @@ class TicTacToeMoveTests: XCTestCase {
         
         let cell = TicTacToeCell(row: 0, column: 0)
         move = [
-            TicTacToeMove(move: cell, weight: 10),
-            TicTacToeMove(move: cell, weight: 0),
-            TicTacToeMove(move: cell, weight: -10)
+            TicTacToeMove(move: cell, weight: TicTacToeTerminalState.Win),
+            TicTacToeMove(move: cell, weight: TicTacToeTerminalState.Tie),
+            TicTacToeMove(move: cell, weight: TicTacToeTerminalState.Lose)
         ]
     }
     
     override func tearDown() {
         super.tearDown()
         
-        //TODO: Does this actaully clean up the objects in the array
         move = nil
     }
     
     
     func testComparable() {
         let min = move.min()
-        XCTAssertTrue(min?.weight == -10)
+        XCTAssertTrue(min?.weight == TicTacToeTerminalState.Lose)
         
         let max = move.max()
-        XCTAssertTrue(max?.weight == 10)
+        XCTAssertTrue(max?.weight == TicTacToeTerminalState.Win)
     }
 }

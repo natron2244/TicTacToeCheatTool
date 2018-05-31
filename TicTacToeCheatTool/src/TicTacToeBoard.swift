@@ -8,7 +8,6 @@
 
 import Foundation
 
-//TODO: Look at using gaurds
 //TODO: Refactor winning logic to use function, they are all simular logic
 struct TicTacToeBoard {
     var board:[[TicTacToeValue]]
@@ -19,35 +18,40 @@ struct TicTacToeBoard {
         self.board = Array(repeating: Array(repeating: TicTacToeValue.empty, count: size.row), count: size.column)
     }
     
-    //TODO: Optimize to only init the two dimensional array only once
-    init(board: TicTacToeBoard) {
-        let size = TicTacToeCell(row: board.getRowCount(), column: board.getColumnCount())
-        self.init(size: size)
-        
-        for row in 0..<size.row {
-            for column in 0..<size.column {
-                self.board[row][column] = board.board[row][column]
-            }
-        }
-    }
-    
-    //TODO: Check out of bounds
     mutating func set(value: TicTacToeValue, cell: TicTacToeCell) {
+        guard cell.row < rowCount() else {
+            assertionFailure("Try to set out of bounds row: \(cell.row)")
+            return
+        }
+        guard cell.column < columnCount() else {
+            assertionFailure("Try to set out of bounds column: \(cell.column)")
+            return
+        }
+        
         self.board[cell.row][cell.column] = value
     }
     
-    //TODO: Check out of bounds
     func getValue(cell: TicTacToeCell) -> TicTacToeValue {
+        guard cell.row < rowCount() else {
+            assertionFailure("Try to get out of bounds row: \(cell.row)")
+            return TicTacToeValue.empty
+        }
+        guard cell.column < columnCount() else {
+            assertionFailure("Try to get out of bounds column: \(cell.column)")
+            return TicTacToeValue.empty
+        }
+        
         return self.board[cell.row][cell.column]
     }
     
-    func getRowCount() -> Int {
+    func rowCount() -> Int {
         return self.size.row
     }
     
-    func getColumnCount() -> Int {
+    func columnCount() -> Int {
         return self.size.column
     }
+    
     /*
      - returns: If a player as won, if neither empty
      */
@@ -101,7 +105,7 @@ struct TicTacToeBoard {
     func checkVerticalWin() -> TicTacToeValue {
         var winner = TicTacToeValue.empty
         
-        for column in 0..<getColumnCount() {
+        for column in 0..<columnCount() {
             var currentWinner = TicTacToeValue.empty
             for row in board {
                 let value = row[column]
@@ -139,7 +143,7 @@ struct TicTacToeBoard {
     
     func checkForwardDiagonalWin() -> TicTacToeValue {
         var winner = TicTacToeValue.empty
-        for (row, column) in zip((0..<getRowCount()), (0..<getColumnCount())) {
+        for (row, column) in zip((0..<rowCount()), (0..<columnCount())) {
             let value = self.board[row][column]
             
             if(value == TicTacToeValue.empty) {
@@ -157,7 +161,7 @@ struct TicTacToeBoard {
     
     func checkBackwardDiagonalWin() -> TicTacToeValue {
         var winner = TicTacToeValue.empty
-        for (row, column) in zip((0..<getRowCount()), (0..<getColumnCount()).reversed()) {
+        for (row, column) in zip((0..<rowCount()), (0..<columnCount()).reversed()) {
             let value = self.board[row][column]
             
             if(value == TicTacToeValue.empty) {
@@ -173,12 +177,10 @@ struct TicTacToeBoard {
         return winner
     }
     
-    
-    
     func emptyPositions() -> [TicTacToeCell] {
         var emptyPositions: [TicTacToeCell] = []
-        for row in 0..<getRowCount() {
-            for column in 0..<getColumnCount() {
+        for row in 0..<rowCount() {
+            for column in 0..<columnCount() {
                 if(self.board[row][column] == TicTacToeValue.empty) {
                     emptyPositions.append(TicTacToeCell(row: row, column: column))
                 }
@@ -195,6 +197,10 @@ struct TicTacToeCell {
     init(row: Int, column: Int) {
         self.row = row
         self.column = column
+    }
+    
+    static func invalidCell() -> TicTacToeCell {
+        return TicTacToeCell(row: -1, column: -1)
     }
 }
 

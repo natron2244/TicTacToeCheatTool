@@ -9,12 +9,6 @@
 import Foundation
 import UIKit
 
-//TODO: Any need comments on re-reader
-//TODO: Remove unneed type checks
-//TODO: Spelling check
-//TODO: Re-visit file division
-//TODO: Actaully allow upload of a board and return next move
-
 struct TicTacToeCheatTool {
     var imageReader: TicTacToeImageReader
     
@@ -22,15 +16,16 @@ struct TicTacToeCheatTool {
         self.imageReader = imageReader
     }
     
+    //TODO: UIImage should be optional as it is need to find the mext move, done so method can be tested
     func getNextBestMove(boardImage: UIImage?, player: TicTacToeValue) -> TicTacToeCell? {
-        //TODO: Pass image in currently set to optional
-        let board: TicTacToeBoard = imageReader.getTicTacToeBoard(boardImage: boardImage)
+        let board = imageReader.getTicTacToeBoard(boardImage: boardImage)
         return getNextBestMove(board: board, player: player)
     }
     
     func getNextBestMove(board: TicTacToeBoard, player: TicTacToeValue) -> TicTacToeCell? {
         //Need a valid player
         if(player == TicTacToeValue.empty) {
+            assertionFailure("No player entered, can't find next move")
             return nil
         }
         
@@ -42,39 +37,39 @@ struct TicTacToeCheatTool {
             return emptyPositions.first
         } else {
             let bestMove = calculateNextBestMove(board: board, targetPlayer: player, currentPlayer: player)
-            return bestMove?.move
+            return bestMove.move
         }
     }
     
     //This fuction process the next best move
-    func calculateNextBestMove(board: TicTacToeBoard, targetPlayer: TicTacToeValue, currentPlayer: TicTacToeValue) -> TicTacToeMove?{
+    func calculateNextBestMove(board: TicTacToeBoard, targetPlayer: TicTacToeValue, currentPlayer: TicTacToeValue) -> TicTacToeMove{
         let emptyPositions = board.emptyPositions()
         let winner = board.hasWinner()
-
+        
         if(winner == targetPlayer) {
-            return TicTacToeMove(move: TicTacToeCell(row: 0, column: 0),
-                                 weight: 10)
+            return TicTacToeMove(move: TicTacToeCell.invalidCell(),
+                                 weight: TicTacToeTerminalState.Win)
         } else if(winner == TicTacToeValue.getOpponent(player: targetPlayer)) {
-            return TicTacToeMove(move: TicTacToeCell(row: 0, column: 0),
-                                 weight: -10)
+            return TicTacToeMove(move: TicTacToeCell.invalidCell(),
+                                 weight: TicTacToeTerminalState.Lose)
         } else if(emptyPositions.isEmpty) {
-            return TicTacToeMove(move: TicTacToeCell(row: 0, column: 0),
-                                 weight: 0)
+            return TicTacToeMove(move: TicTacToeCell.invalidCell(),
+                                 weight: TicTacToeTerminalState.Tie)
         }
-
+        
         var moves: [TicTacToeMove] = []
         for emptyCell in emptyPositions {
-            var nextTurnBoard = TicTacToeBoard(board: board)
+            var nextTurnBoard = board;
             nextTurnBoard.set(value: currentPlayer, cell: emptyCell)
-
+            
             let nextMove = calculateNextBestMove(board: nextTurnBoard,
                                                  targetPlayer: targetPlayer,
                                                  currentPlayer: TicTacToeValue.getOpponent(player: currentPlayer))
             
-            let move = TicTacToeMove(move: emptyCell, weight: nextMove!.weight)
+            let move = TicTacToeMove(move: emptyCell, weight: nextMove.weight)
             moves.append(move)
         }
-
+        
         let bestMove = currentPlayer == targetPlayer ? moves.max()! : moves.min()!
         return bestMove
     }
@@ -82,19 +77,23 @@ struct TicTacToeCheatTool {
 
 struct TicTacToeMove: Comparable {
     var move: TicTacToeCell
-    var weight: Int
+    var weight: TicTacToeTerminalState
     
-    init(move: TicTacToeCell, weight: Int) {
+    init(move: TicTacToeCell, weight: TicTacToeTerminalState) {
         self.move = move
         self.weight = weight
     }
     
     static func < (firstMove: TicTacToeMove, secondMove: TicTacToeMove) -> Bool {
-        return firstMove.weight < secondMove.weight
+        return firstMove.weight.rawValue < secondMove.weight.rawValue
     }
     
     static func == (firstMove: TicTacToeMove, secondMove: TicTacToeMove) -> Bool {
-        return firstMove.weight == secondMove.weight
+        return firstMove.weight.rawValue == secondMove.weight.rawValue
     }
+}
+
+enum TicTacToeTerminalState: Int {
+    case Win = 10, Lose = -10, Tie = 0
 }
 

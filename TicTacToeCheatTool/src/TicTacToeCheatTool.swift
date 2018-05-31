@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-//TODO: Write out restrictions of the code base
 //TODO: Any need comments on re-reader
 //TODO: Remove unneed type checks
 //TODO: Spelling check
@@ -79,6 +78,23 @@ struct TicTacToeCheatTool {
         let bestMove = currentPlayer == targetPlayer ? moves.max()! : moves.min()!
         return bestMove
     }
+}
 
+struct TicTacToeMove: Comparable {
+    var move: TicTacToeCell
+    var weight: Int
+    
+    init(move: TicTacToeCell, weight: Int) {
+        self.move = move
+        self.weight = weight
+    }
+    
+    static func < (firstMove: TicTacToeMove, secondMove: TicTacToeMove) -> Bool {
+        return firstMove.weight < secondMove.weight
+    }
+    
+    static func == (firstMove: TicTacToeMove, secondMove: TicTacToeMove) -> Bool {
+        return firstMove.weight == secondMove.weight
+    }
 }
 

@@ -27,7 +27,7 @@ class TicTacToeMoveTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
         
-        //TODO: Does this actaully clean up the objects
+        //TODO: Does this actaully clean up the objects in the array
         move = nil
     }
     

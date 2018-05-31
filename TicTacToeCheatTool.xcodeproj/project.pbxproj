@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		420AA84820BE268E00BA7984 /* TicTacToeMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420AA84720BE268E00BA7984 /* TicTacToeMove.swift */; };
-		420AA84920BE268E00BA7984 /* TicTacToeMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420AA84720BE268E00BA7984 /* TicTacToeMove.swift */; };
-		420AA84B20BE26F300BA7984 /* TicTacToeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420AA84A20BE26F300BA7984 /* TicTacToeValue.swift */; };
-		420AA84C20BE26F300BA7984 /* TicTacToeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420AA84A20BE26F300BA7984 /* TicTacToeValue.swift */; };
 		420AA84E20BE273100BA7984 /* TicTacToeImageReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420AA84D20BE273100BA7984 /* TicTacToeImageReader.swift */; };
 		420AA84F20BE273100BA7984 /* TicTacToeImageReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420AA84D20BE273100BA7984 /* TicTacToeImageReader.swift */; };
 		420AA85120BE275800BA7984 /* TicTacToeBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420AA85020BE275800BA7984 /* TicTacToeBoard.swift */; };
@@ -39,8 +35,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		420AA84720BE268E00BA7984 /* TicTacToeMove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeMove.swift; sourceTree = "<group>"; };
-		420AA84A20BE26F300BA7984 /* TicTacToeValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeValue.swift; sourceTree = "<group>"; };
 		420AA84D20BE273100BA7984 /* TicTacToeImageReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeImageReader.swift; sourceTree = "<group>"; };
 		420AA85020BE275800BA7984 /* TicTacToeBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeBoard.swift; sourceTree = "<group>"; };
 		420AA85320BE277B00BA7984 /* TicTacToeCheatTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeCheatTool.swift; sourceTree = "<group>"; };
@@ -81,8 +75,6 @@
 			isa = PBXGroup;
 			children = (
 				420AA85320BE277B00BA7984 /* TicTacToeCheatTool.swift */,
-				420AA84720BE268E00BA7984 /* TicTacToeMove.swift */,
-				420AA84A20BE26F300BA7984 /* TicTacToeValue.swift */,
 				420AA84D20BE273100BA7984 /* TicTacToeImageReader.swift */,
 				420AA85020BE275800BA7984 /* TicTacToeBoard.swift */,
 			);
@@ -237,8 +229,6 @@
 				420AA84E20BE273100BA7984 /* TicTacToeImageReader.swift in Sources */,
 				420AA85420BE277B00BA7984 /* TicTacToeCheatTool.swift in Sources */,
 				420AA85120BE275800BA7984 /* TicTacToeBoard.swift in Sources */,
-				420AA84B20BE26F300BA7984 /* TicTacToeValue.swift in Sources */,
-				420AA84820BE268E00BA7984 /* TicTacToeMove.swift in Sources */,
 				42777A5C20BE17E300581D80 /* ViewController.swift in Sources */,
 				42777A5A20BE17E300581D80 /* AppDelegate.swift in Sources */,
 			);
@@ -254,8 +244,6 @@
 				42C33FC820BEBBF400468E5C /* TicTacToeImageReaderTests.swift in Sources */,
 				420AA85220BE275800BA7984 /* TicTacToeBoard.swift in Sources */,
 				42C33FCA20BED7A800468E5C /* TicTacToeCheatToolTests.swift in Sources */,
-				420AA84C20BE26F300BA7984 /* TicTacToeValue.swift in Sources */,
-				420AA84920BE268E00BA7984 /* TicTacToeMove.swift in Sources */,
 				42777A7E20BE1B8300581D80 /* TicTacToeMoveTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

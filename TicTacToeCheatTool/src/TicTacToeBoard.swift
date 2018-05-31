@@ -8,16 +8,6 @@
 
 import Foundation
 
-struct TicTacToeCell {
-    var row: Int
-    var column: Int
-    
-    init(row: Int, column: Int) {
-        self.row = row
-        self.column = column
-    }
-}
-
 //TODO: Look at using gaurds
 //TODO: Refactor winning logic to use function, they are all simular logic
 struct TicTacToeBoard {
@@ -195,5 +185,32 @@ struct TicTacToeBoard {
             }
         }
         return emptyPositions
+    }
+}
+
+struct TicTacToeCell {
+    var row: Int
+    var column: Int
+    
+    init(row: Int, column: Int) {
+        self.row = row
+        self.column = column
+    }
+}
+
+enum TicTacToeValue: String {
+    case X = "X", O = "O", empty = ""
+    
+    static let allValues = [X, O, empty]
+    
+    static func getOpponent(player: TicTacToeValue) -> TicTacToeValue {
+        switch player {
+        case .X:
+            return TicTacToeValue.O
+        case .O:
+            return TicTacToeValue.X
+        default:
+            return TicTacToeValue.empty
+        }
     }
 }

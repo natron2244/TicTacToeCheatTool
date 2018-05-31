@@ -40,7 +40,7 @@ struct TicTacToeImageReader {
             //var valueImage = getImageForValue(value)
             //if(boardImage.contains(image: valueImage, inRect: imageRect)
             //{
-            //return value;
+            //return value
             //}
             print("Looking for \(value) in \(NSStringFromCGRect(imageRect))")
         }
@@ -49,8 +49,8 @@ struct TicTacToeImageReader {
     }
     
     func getImageRect(cell: TicTacToeCell) -> CGRect {
-        let x = CGFloat(cell.row) * self.cellSize.width;
-        let y = CGFloat(cell.column) * self.cellSize.height;
+        let x = CGFloat(cell.row) * self.cellSize.width
+        let y = CGFloat(cell.column) * self.cellSize.height
         
         let rect = CGRect(x: x,
                           y: y,

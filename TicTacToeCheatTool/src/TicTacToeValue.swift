@@ -11,7 +11,7 @@ import Foundation
 enum TicTacToeValue: String {
     case X = "X", O = "O", empty = ""
     
-    static let allValues = [X, O, empty];
+    static let allValues = [X, O, empty]
     
     static func getOpponent(player: TicTacToeValue) -> TicTacToeValue {
         switch player {

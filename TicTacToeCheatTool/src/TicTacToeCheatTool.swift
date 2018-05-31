@@ -11,7 +11,6 @@ import UIKit
 
 //TODO: Write out restrictions of the code base
 //TODO: Any need comments on re-reader
-//TODO: Look for any unneed ;
 //TODO: Remove unneed type checks
 //TODO: Spelling check
 //TODO: Re-visit file division
@@ -41,7 +40,7 @@ struct TicTacToeCheatTool {
             board.hasWinner() != TicTacToeValue.empty) {
             return nil
         } else if(emptyPositions.count == 1) {
-            return emptyPositions.first;
+            return emptyPositions.first
         } else {
             let bestMove = calculateNextBestMove(board: board, targetPlayer: player, currentPlayer: player)
             return bestMove?.move
@@ -64,7 +63,7 @@ struct TicTacToeCheatTool {
                                  weight: 0)
         }
 
-        var moves: [TicTacToeMove] = [];
+        var moves: [TicTacToeMove] = []
         for emptyCell in emptyPositions {
             var nextTurnBoard = TicTacToeBoard(board: board)
             nextTurnBoard.set(value: currentPlayer, cell: emptyCell)

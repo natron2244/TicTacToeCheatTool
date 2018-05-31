@@ -21,7 +21,7 @@ class TicTacToeImageReaderTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
         
-        imageReader = nil;
+        imageReader = nil
     }
     
     func testGetTicTacToeBoard() {

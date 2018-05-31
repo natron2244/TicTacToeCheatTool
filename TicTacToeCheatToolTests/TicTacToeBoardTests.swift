@@ -31,14 +31,14 @@ class TicTacToeBoardTests: XCTestCase {
         var value = board.getValue(cell: TicTacToeCell(row: 0, column: 0))
         XCTAssertTrue(value == TicTacToeValue.empty)
         
-        var firstEmptycell = emptycells[0];
+        var firstEmptycell = emptycells[0]
         XCTAssertTrue(firstEmptycell.row == 0 && firstEmptycell.column == 0)
         
         board.set(value: TicTacToeValue.X, cell: TicTacToeCell(row: 0, column: 0))
         emptycells = board.emptyPositions()
         XCTAssertTrue(emptycells.count == 8)
         
-        firstEmptycell = emptycells[0];
+        firstEmptycell = emptycells[0]
         XCTAssertTrue(firstEmptycell.row == 0 && firstEmptycell.column == 1)
         
         value = board.getValue(cell: TicTacToeCell(row: 0, column: 0))

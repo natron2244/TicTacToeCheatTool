@@ -21,8 +21,8 @@ struct TicTacToeCell {
 //TODO: Look at using gaurds
 //TODO: Refactor winning logic to use function, they are all simular logic
 struct TicTacToeBoard {
-    var board:[[TicTacToeValue]];
-    let size: TicTacToeCell;
+    var board:[[TicTacToeValue]]
+    let size: TicTacToeCell
     
     init(size: TicTacToeCell) {
         self.size = size
@@ -32,7 +32,7 @@ struct TicTacToeBoard {
     //TODO: Optimize to only init the two dimensional array only once
     init(board: TicTacToeBoard) {
         let size = TicTacToeCell(row: board.getRowCount(), column: board.getColumnCount())
-        self.init(size: size);
+        self.init(size: size)
         
         for row in 0..<size.row {
             for column in 0..<size.column {
@@ -80,14 +80,14 @@ struct TicTacToeBoard {
      - returns: If a player as won, if neither empty
      */
     func checkHorizontalWin() -> TicTacToeValue {
-        var winner = TicTacToeValue.empty;
+        var winner = TicTacToeValue.empty
         
         for rows in self.board {
             var currentWinner = TicTacToeValue.empty
             for value in rows {
                 if(value == TicTacToeValue.empty) {
-                    currentWinner = TicTacToeValue.empty;
-                    break;
+                    currentWinner = TicTacToeValue.empty
+                    break
                 } else if(currentWinner == TicTacToeValue.empty) {
                     currentWinner = value
                 } else if(currentWinner != value) {
@@ -109,15 +109,15 @@ struct TicTacToeBoard {
      - returns: If a player as won, if neither empty
      */
     func checkVerticalWin() -> TicTacToeValue {
-        var winner = TicTacToeValue.empty;
+        var winner = TicTacToeValue.empty
         
         for column in 0..<getColumnCount() {
             var currentWinner = TicTacToeValue.empty
             for row in board {
-                let value = row[column];
+                let value = row[column]
                 if(value == TicTacToeValue.empty) {
-                    currentWinner = TicTacToeValue.empty;
-                    break;
+                    currentWinner = TicTacToeValue.empty
+                    break
                 } else if(currentWinner == TicTacToeValue.empty) {
                     currentWinner = value
                 } else if(currentWinner != value) {
@@ -141,7 +141,7 @@ struct TicTacToeBoard {
     func checkDiagonalWin() -> TicTacToeValue {
         let forwardDiagonalWinner = checkForwardDiagonalWin()
         if(forwardDiagonalWinner != TicTacToeValue.empty) {
-            return forwardDiagonalWinner;
+            return forwardDiagonalWinner
         } else {
             return checkBackwardDiagonalWin()
         }
@@ -153,8 +153,8 @@ struct TicTacToeBoard {
             let value = self.board[row][column]
             
             if(value == TicTacToeValue.empty) {
-                winner = TicTacToeValue.empty;
-                break;
+                winner = TicTacToeValue.empty
+                break
             } else if(winner == TicTacToeValue.empty) {
                 winner = value
             } else if(winner != value) {
@@ -162,7 +162,7 @@ struct TicTacToeBoard {
                 break
             }
         }
-        return winner;
+        return winner
     }
     
     func checkBackwardDiagonalWin() -> TicTacToeValue {
@@ -171,8 +171,8 @@ struct TicTacToeBoard {
             let value = self.board[row][column]
             
             if(value == TicTacToeValue.empty) {
-                winner = TicTacToeValue.empty;
-                break;
+                winner = TicTacToeValue.empty
+                break
             } else if(winner == TicTacToeValue.empty) {
                 winner = value
             } else if(winner != value) {

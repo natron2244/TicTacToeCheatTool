@@ -10,19 +10,19 @@ import Foundation
 import UIKit
 
 struct TicTacToeMove: Comparable {
-    var position: CGPoint;
-    var weight: Int;
+    var move: TicTacToeCell
+    var weight: Int
     
-    init(position: CGPoint, weight: Int) {
-        self.position = position;
-        self.weight = weight;
+    init(move: TicTacToeCell, weight: Int) {
+        self.move = move
+        self.weight = weight
     }
     
     static func < (firstMove: TicTacToeMove, secondMove: TicTacToeMove) -> Bool {
-        return firstMove.weight < secondMove.weight;
+        return firstMove.weight < secondMove.weight
     }
     
     static func == (firstMove: TicTacToeMove, secondMove: TicTacToeMove) -> Bool {
-        return firstMove.weight == secondMove.weight;
+        return firstMove.weight == secondMove.weight
     }
 }

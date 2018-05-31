@@ -10,33 +10,30 @@ import Foundation
 import UIKit
 
 struct TicTacToeImageReader {
-    var boardSize: CGSize
+    var boardSize: TicTacToeCell
     var cellSize: CGSize
     
-    init(boardSize: CGSize, cellSize: CGSize) {
-        //Number of rows and columns
+    init(boardSize: TicTacToeCell, cellSize: CGSize) {
         self.boardSize = boardSize
-        //Pixil size of each cell width and height
         self.cellSize = cellSize
     }
     
-    func getTicTacToeBoard(/*boardImage: UIImage,*/) -> TicTacToeBoard {
-        var board = TicTacToeBoard(size: self.boardSize)
+    func getTicTacToeBoard(boardImage: UIImage?) -> TicTacToeBoard {
+        var board = TicTacToeBoard(cell: self.boardSize)
         
-        //TODO: Check if off by one
-        for x in 0..<Int(self.boardSize.width) {
-            for y in 0..<Int(self.boardSize.height) {
-                let position = CGPoint(x: x, y: y)
-                let value = getBoardValue(/*boardImage: boardImage,*/ position: position)
-                board.set(value: value, position: position)
+        for row in 0..<self.boardSize.row {
+            for column in 0..<self.boardSize.column {
+                let cell = TicTacToeCell(row: row, column: column)
+                let value = getBoardValue(boardImage: boardImage, cell: cell)
+                board.set(value: value, cell: cell)
             }
         }
         return board
     }
     
-    func getBoardValue(/*boardImage: UIImage,*/ position: CGPoint) -> TicTacToeValue {
+    func getBoardValue(boardImage: UIImage?, cell: TicTacToeCell) -> TicTacToeValue {
         
-        let imageRect = getImageRect(position: position)
+        let imageRect = getImageRect(cell: cell)
         for value in TicTacToeValue.allValues {
             //--- Pseudocode ---
             //TODO: Need image matching library here to match images.
@@ -45,15 +42,15 @@ struct TicTacToeImageReader {
             //{
             //return value;
             //}
-            print(value)
+            print("Looking for \(value) in \(NSStringFromCGRect(imageRect))")
         }
         
-        return TicTacToeValue.O
+        return TicTacToeValue.empty
     }
     
-    func getImageRect(position: CGPoint) -> CGRect {
-        let x = position.x * self.cellSize.width;
-        let y = position.y * self.cellSize.height;
+    func getImageRect(cell: TicTacToeCell) -> CGRect {
+        let x = CGFloat(cell.row) * self.cellSize.width;
+        let y = CGFloat(cell.column) * self.cellSize.height;
         
         let rect = CGRect(x: x,
                           y: y,

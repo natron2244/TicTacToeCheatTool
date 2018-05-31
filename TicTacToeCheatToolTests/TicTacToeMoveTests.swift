@@ -16,11 +16,11 @@ class TicTacToeMoveTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let position = CGPoint(x: 0, y: 0)
+        let cell = TicTacToeCell(row: 0, column: 0)
         move = [
-            TicTacToeMove(position: position, weight: 10),
-            TicTacToeMove(position: position, weight: 0),
-            TicTacToeMove(position: position, weight: -10)
+            TicTacToeMove(move: cell, weight: 10),
+            TicTacToeMove(move: cell, weight: 0),
+            TicTacToeMove(move: cell, weight: -10)
         ]
     }
     

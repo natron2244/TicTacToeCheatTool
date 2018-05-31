@@ -9,12 +9,6 @@
 import Foundation
 import UIKit
 
-//TODO: Use optionals for null checking
-//TODO: Only pass back one move, if even just choose the first
-//TODO: Set private and public methods
-//TODO: Test logic use a TicTacToeBoard, UnitTesting?
-//TODO: Uncomment UImage varibles
-//TODO: Add a row and column struct to replace CGPoint
 //TODO: Write out restrictions of the code base
 //TODO: Any need comments on re-reader
 //TODO: Look for any unneed ;
@@ -30,17 +24,13 @@ struct TicTacToeCheatTool {
         self.imageReader = imageReader
     }
     
-    /*
-     Gets an array CGPoints of best possible moves given the board.
-     Note: The top-left is x:0, y:0
-     - returns: An array of CGPoint, empty is there is not best next move. For example some one has already won the game.
-     */
-    func getNextBestMove(/*boardImage: UIImage, */ player: TicTacToeValue) -> CGPoint? {
-        let board: TicTacToeBoard = imageReader.getTicTacToeBoard(/*boardImage: boardImage,*/)
+    func getNextBestMove(boardImage: UIImage?, player: TicTacToeValue) -> TicTacToeCell? {
+        //TODO: Pass image in currently set to optional
+        let board: TicTacToeBoard = imageReader.getTicTacToeBoard(boardImage: boardImage)
         return getNextBestMove(board: board, player: player)
     }
     
-    func getNextBestMove(board: TicTacToeBoard, player: TicTacToeValue) -> CGPoint? {
+    func getNextBestMove(board: TicTacToeBoard, player: TicTacToeValue) -> TicTacToeCell? {
         //Need a valid player
         if(player == TicTacToeValue.empty) {
             return nil
@@ -54,7 +44,7 @@ struct TicTacToeCheatTool {
             return emptyPositions.first;
         } else {
             let bestMove = calculateNextBestMove(board: board, targetPlayer: player, currentPlayer: player)
-            return bestMove?.position
+            return bestMove?.move
         }
     }
     
@@ -64,23 +54,26 @@ struct TicTacToeCheatTool {
         let winner = board.hasWinner()
 
         if(winner == targetPlayer) {
-            return TicTacToeMove(position: CGPoint(x: 0, y: 0), weight: 10)
+            return TicTacToeMove(move: TicTacToeCell(row: 0, column: 0),
+                                 weight: 10)
         } else if(winner == TicTacToeValue.getOpponent(player: targetPlayer)) {
-            return TicTacToeMove(position: CGPoint(x: 0, y: 0), weight: -10)
+            return TicTacToeMove(move: TicTacToeCell(row: 0, column: 0),
+                                 weight: -10)
         } else if(emptyPositions.isEmpty) {
-            return TicTacToeMove(position: CGPoint(x: 0, y: 0), weight: 0)
+            return TicTacToeMove(move: TicTacToeCell(row: 0, column: 0),
+                                 weight: 0)
         }
 
         var moves: [TicTacToeMove] = [];
-        for position in emptyPositions {
+        for emptyCell in emptyPositions {
             var nextTurnBoard = TicTacToeBoard(board: board)
-            nextTurnBoard.set(value: currentPlayer, position: position)
+            nextTurnBoard.set(value: currentPlayer, cell: emptyCell)
 
             let nextMove = calculateNextBestMove(board: nextTurnBoard,
                                                  targetPlayer: targetPlayer,
                                                  currentPlayer: TicTacToeValue.getOpponent(player: currentPlayer))
             
-            let move = TicTacToeMove(position: position, weight: nextMove!.weight)
+            let move = TicTacToeMove(move: emptyCell, weight: nextMove!.weight)
             moves.append(move)
         }
 
